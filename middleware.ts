@@ -39,6 +39,7 @@ export async function middleware(req: NextRequest) {
   urlWithGeo.searchParams.set('regionName', geoIp.regionName);
   urlWithGeo.searchParams.set('city', geoIp.city);
   urlWithGeo.searchParams.set('cityNickname', cityNickname);
+  console.log('middleware', urlWithGeo, urlWithGeo.searchParams);
 
   return NextResponse.rewrite(urlWithGeo);
 }
