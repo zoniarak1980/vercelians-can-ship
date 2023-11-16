@@ -40,6 +40,7 @@ export async function Profile({
   const daysOfShipping = handleDate(created_at).diffDays;
 
   const { city, cityNickname, region } = searchParams ?? {};
+  console.log("profiletsx", searchParams)
 
   const firstName = name.split(' ')[0];
   const restOfName = name.split(' ').slice(1).join(' ');

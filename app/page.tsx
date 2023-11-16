@@ -12,7 +12,7 @@ import { getGithubProfile } from './lib/get-github-profile';
 
 export default async function Home({ searchParams }: { searchParams: any }) {
   const profileData = await getGithubProfile(yourGithubUsername);
-  // console.log(searchParams);
+  console.log("page.tsx", searchParams);
   if (!profileData) {
     return <EmptyState />;
   }

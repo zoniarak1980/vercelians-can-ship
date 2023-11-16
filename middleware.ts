@@ -33,7 +33,6 @@ export async function middleware(req: NextRequest) {
   const cityNickname = getNickname(geoIp.city);
   // console.log(geoIp);
   const urlWithGeo = req.nextUrl.clone();
-  console.log(geoIp);
   urlWithGeo.searchParams.set('country', geoIp.country);
   urlWithGeo.searchParams.set('countryCode', geoIp.countryCode);
   urlWithGeo.searchParams.set('region', geoIp.region);
