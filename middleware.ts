@@ -19,8 +19,10 @@ function getNickname(city: string) {
 export async function middleware(req: NextRequest) {
   const headersList = headers();
 
+  // const ip = "68.173.59.125" //debug
   const ip =
     headersList.get('x-forwarded-for') || req?.ip || req?.socket?.remoteAddress;
+  console.log(ip);
 
   if (!ip) {
     return NextResponse.rewrite(req.nextUrl);
@@ -30,7 +32,7 @@ export async function middleware(req: NextRequest) {
   const response = await fetch(ipCheckUrl);
   const geoIp = await response.json();
   const cityNickname = getNickname(geoIp.city);
-
+  // console.log(geoIp);
   const urlWithGeo = req.nextUrl.clone();
 
   urlWithGeo.searchParams.set('country', geoIp.country);
