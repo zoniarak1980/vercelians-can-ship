@@ -22,7 +22,6 @@ export async function middleware(req: NextRequest) {
   // const ip = "68.173.59.125" //debug
   const ip =
     headersList.get('x-forwarded-for') || req?.ip || req?.socket?.remoteAddress;
-  console.log(ip);
 
   if (!ip) {
     return NextResponse.rewrite(req.nextUrl);
@@ -34,7 +33,7 @@ export async function middleware(req: NextRequest) {
   const cityNickname = getNickname(geoIp.city);
   // console.log(geoIp);
   const urlWithGeo = req.nextUrl.clone();
-
+  console.log(geoIp);
   urlWithGeo.searchParams.set('country', geoIp.country);
   urlWithGeo.searchParams.set('countryCode', geoIp.countryCode);
   urlWithGeo.searchParams.set('region', geoIp.region);
